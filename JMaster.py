@@ -44,6 +44,7 @@ def parse(contest_id):
         raise Exception('Invaild Contest Id')
     page = BeautifulSoup(res.text, 'lxml')
     contest_name = page.find('table', attrs={'class': 'rtable'}).find('tr').find('a').text
+    contest_name = contest_name.replace('#', '')
     prefix = time.strftime("%Y-%b-%d", time.localtime()) + " - " + contest_name
     if not os.path.exists(prefix):
         os.mkdir(prefix)
