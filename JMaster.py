@@ -122,6 +122,7 @@ def testCase(prefix, sample_in, sample_out, cas_num):
     stdout_data, stderr_data = t.communicate(input=bytes(sample_in, encoding='utf-8'))
     stdout_data = str(stdout_data, encoding='utf-8').strip()
     stderr_data = str(stderr_data, encoding='utf-8').strip()
+    stdout_data = '\n'.join([_.strip() for _ in stdout_data.split('\n')])
     print(stdout_data)
     print('\nStderr output:')
     print(stderr_data)
