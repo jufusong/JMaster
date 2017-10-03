@@ -45,10 +45,10 @@ def parse(contest_id):
     page = BeautifulSoup(res.text, 'lxml')
     contest_name = page.find('table', attrs={'class': 'rtable'}).find('tr').find('a').text
     contest_name = contest_name.replace('#', '')
-    pre1 = time.strftime("%Y-%b", time.localtime())
+    pre1 = time.strftime("%Y-%m", time.localtime())
     if not os.path.exists(pre1):
         os.mkdir(pre1)
-    prefix = os.path.join(pre1, time.strftime("%Y-%b-%d", time.localtime()) + " - " + contest_name)
+    prefix = os.path.join(pre1, time.strftime("%Y-%m-%d", time.localtime()) + " - " + contest_name)
     if not os.path.exists(prefix):
         os.mkdir(prefix)
     tr = [_ for _ in page.find('table', attrs={'class': 'problems'}).findAll('tr')]
